@@ -9,3 +9,20 @@ pom.xml.asc
 .lein-repl-history
 .lein-plugins/
 .lein-failures
+
+# Eclipse
+.classpath
+.project
+.settings/
+
+# Intellij
+.idea/
+*.iml
+*.iws
+
+# Mac
+.DS_Store
+
+# Maven
+log/
+target/
