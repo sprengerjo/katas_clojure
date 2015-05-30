@@ -1,4 +1,4 @@
-(ns sprengerjo.fizzBuzz-test
+(ns sprengerjo.fizzBuzz_test
   (:use clojure.test
         midje.sweet
         sprengerjo.fizzBuzz))
