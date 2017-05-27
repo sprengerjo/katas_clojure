@@ -1,10 +1,11 @@
 (ns sprengerjo.fizzBuzz)
 
 (defn fizz-buzz [i]
-  (if (= (mod i 15) 0) "fizzbuzz"
-  (if (= (mod i 3) 0) "fizz"
-  (if (= (mod i 5) 0) "buzz"
-   (str i)))))
+  (-> i
+      fizz-buzz-upTo
+      (nth i)
+      ))
 
 (defn fizz-buzz-upTo [n]
-  (for [i (range 1 (inc n))] (fizz-buzz i)))
+  (let [c constantly s #(str (inc %)) [f b] [(c "fizz") (c "buzz")] fb (c (str (f) (b)))]
+    (take n (map-indexed #(%2 %) (cycle [s s f s b f s s f b s f s s fb])))))

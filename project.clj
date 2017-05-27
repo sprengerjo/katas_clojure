@@ -3,8 +3,8 @@
   :url "http://example.com/FIXME"
   :license {:name "Eclipse Public License"
             :url "http://www.eclipse.org/legal/epl-v10.html"}
-  :dependencies [[org.clojure/clojure "1.6.0"]
-                 [midje "1.6.0"]]
-  :dev-dependencies [lein-midje "3.1.3"]
-  :profiles {:dev {:plugins [[lein-midje "3.1.3"]]}}
+  :dependencies [[org.clojure/clojure "1.8.0"]
+                 [midje "1.8.3"]]
+  :dev-dependencies [lein-midje "3.2.1"]
+  :profiles {:dev {:plugins [[lein-midje "3.2.1"]]}}
   )
