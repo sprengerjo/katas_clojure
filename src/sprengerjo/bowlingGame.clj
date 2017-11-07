@@ -1,20 +1,20 @@
 (ns sprengerjo.bowlingGame)
- 
-(defn remove-last-strike [pins]
-  (if (= 10 (last pins)) 
-    (drop-last pins) 
-       pins))
 
-(defn frame-bonus [a b c]
-  (cond 
-    (= 10 a) [b c] 
-    (= 10 (+ a b)) [c] 
-    :else []))
+(defn frame-bonus [[a b c] sum]
+  (cond
+    (= 10 a) (+ b c sum)
+    (= 10 (+ a b)) (+ c sum)
+    :else sum))
 
-(defn bonus [pins]
-  (mapcat frame-bonus pins 
-     (drop 1 pins) 
-       (drop 2 (remove-last-strike pins))))
+(defn bonus [rolls]
+  (loop [sum 0
+         rs rolls]
+    (if (<= (count rs) 3)
+      sum
+      (recur (frame-bonus rs sum) (drop (if (= 10 (first rs)) 1 2) rs)))))
+
+(defn sum [ns]
+  (reduce + ns))
 
 (defn score [pins]
-  (reduce + (concat pins (bonus pins))))
+  (sum ((juxt sum bonus) pins)))
