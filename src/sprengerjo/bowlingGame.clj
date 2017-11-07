@@ -6,12 +6,17 @@
     (= 10 (+ a b)) (+ c sum)
     :else sum))
 
+(defn drop-frame [[first]]
+  (if (= 10 first)
+    rest
+    (partial drop 2)))
+
 (defn bonus [rolls]
   (loop [sum 0
          rs rolls]
     (if (<= (count rs) 3)
       sum
-      (recur (frame-bonus rs sum) (drop (if (= 10 (first rs)) 1 2) rs)))))
+      (recur (frame-bonus rs sum) ((drop-frame rs) rs)))))
 
 (defn sum [ns]
   (reduce + ns))

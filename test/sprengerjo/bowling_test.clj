@@ -11,7 +11,7 @@
    "scores should be calculated as expected"
    (score (roll-many 20 0)) => 0
    (score (roll-many 20 1)) => 20
-   (score (concat [5 5] (roll-many 18 1))) => (+ 5 5 1 18)
+   (score (concat [5 5 5 5] (roll-many 16 1))) => (+ 5 5 5 5 5 1 16)
    (score (conj  (roll-many 18 1) 10)) => (+ 10 1 1 18)
    (score (roll-many 12 10)) => 300
    )
