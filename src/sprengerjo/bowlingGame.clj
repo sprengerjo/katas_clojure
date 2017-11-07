@@ -18,8 +18,7 @@
       sum
       (recur (frame-bonus rs sum) ((drop-frame rs) rs)))))
 
-(defn sum [ns]
-  (reduce + ns))
+(def sum (partial reduce +))
 
 (defn score [pins]
   (sum ((juxt sum bonus) pins)))
